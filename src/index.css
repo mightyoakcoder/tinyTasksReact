@@ -1,13 +1,164 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+/* Progress Bar CSS */
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+  background-color: #e3edf7;
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.skill{
+  width: 160px;
+  height: 160px;
+  position: relative;
+  margin-top: 4.25rem;
+}
+
+.outer{
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  padding: 20px;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+              -6px -6px 10px -1px rgb(137, 138, 123)
+}
+
+.inner{
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+              inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+              -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+              0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
+              0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+}
+
+#number{
+  font-weight: 600;
+  color:#555;
+}
+
+circle{
+  fill: none;
+  stroke: url(#GradientColor);
+  stroke-width: 20px;
+  stroke-dasharray: 439.8;
+  stroke-dashoffset: 439.8;
+  /* animation: anim 2s linear forwards; */
+}
+
+svg{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes anim{
+  100%{
+    /* 439.8 - 439.8 * 0.65 = 156.93 */
+    /* stroke-dashoffset: 153.93; */
+    stroke-dashoffset:calc(439.8-(439.8*var(--number))/100);
+  }
+}
+
+ /* Calculator CSS */
+
+body {
+  height: 100vh;
+  background: #F6F8F9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fredoka", sans-serif;
+  /* font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal; */
+}
+
+.screen {
+  height: 4rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.wrapper {
+  background: #F6F8F9;
+  width: 100%;
+  max-width: 30rem;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0px 9px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.buttonBox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-items: center;
+}
+
+.button {
+  background: none;
+  border: none;
+  padding: 0;
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.button img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem; /* Add space between image and label */
+}
+
+.button span {
+  font-size: 0.75rem; /* Adjust as needed */
+  margin-top: 0.5rem; /* Add space above the label */
+}
+
+.button:hover {
+  border: 2px dotted #242424;
+}
+
+.equals{
+  grid-column: span 3;
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.carousel-image {
+  max-width: 100%;
+  height: auto;
 }
