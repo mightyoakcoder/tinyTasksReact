@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Progress Bar</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+
+<div class="skill">
+  <div class="outer">
+    <div class="inner">
+      <div id="number">
+      </div>
+    </div>
+  </div>
+
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+    <defs>
+       <linearGradient id="GradientColor">
+          <stop offset="0%" stop-color="#e0e34d" />
+          <stop offset="100%" stop-color="#e82121" />
+       </linearGradient>
+    </defs>
+    <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+</svg>
+  
+</div>
+    
+
+<script>
+  let number = document.getElementById("number");
+  let circle = document.querySelector("circle");
+  let counter = 0;
+  
+  function updateProgressBar(currentPoints, totalPoints) {
+      let progress = (currentPoints / totalPoints) * 100;
+      return Math.min(progress, 100); //Ensures progress doesn't exceed 100;
+    }
+
+    function animateProgress(targetPercentage) {
+      let counter = 0;
+      clearInterval(animationInterval);
+
+      animationInterval = setInterval(() => {
+        if (counter == targetPercentage) {
+          clearInterval(animationInterval);
+          updateCircle(targetPercentage); // Ensure we end on the exact target
+        } else {
+          counter++;
+          updateCircle(counter);
+        }
+      }, 30.77);
+    }
+  
+  function updateCircle(percentage) {
+    number.innerHTML = Math.round(percentage) + "%";
+    let offset = 439.8 - (439.8 * percentage) / 100;
+    circle.style.strokeDashoffset = offset;
+  }
+
+  // function to update progress based on current app state
+  function updateProgress() {
+    // Replace these with your actual app logic to get current and total points
+    let currentPoints = getCurrentPointsFromApp();
+    let totalPoints = getTotalPointsFromApp();
+
+    let progress = updateProgressBar(currentPoints, totalPoints);
+    updateCircle(progress);
+  }
+
+  //Example functions to get points (replace with your actual logic)
+  function getCurrentPointsFromApp() {
+    //This should return the current points from your app
+    // return Math.floor(Math.random() * 100); //Example: random number for demonstration
+    return 85;
+  }
+
+  function getTotalPointsFromApp() {
+    // This should return the total possible points from your app
+    return 100; //Example: fixed total for demonstration
+  }
+
+  // Update progress every second (adjust interval as needed)
+
+  setInterval(updateProgress, 1000);
+
+  //Initial Update
+  updateProgress();
+  
+</script>
+  </body>
+</html>
